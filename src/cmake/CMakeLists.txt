@@ -10,6 +10,6 @@ list(APPEND CMAKE_PREFIX_PATH "C:\\Program Files (x86)\\SFML-2.2")
 set( SFML_STATIC_LIBRARIES TRUE )
 
 # if you want to use any other sfml modules (e.g. audio) add them here
-find_package(SFML 2 COMPONENTS system window graphics REQUIRED)
+find_package(SFML 2 COMPONENTS graphics window system REQUIRED)
 
 find_package(OpenGL REQUIRED)
