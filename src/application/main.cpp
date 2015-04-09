@@ -4,6 +4,10 @@
  * You can add new command line arguments and event handling here though.
  */
 
+#ifdef _WIN32
+#include <GL/glew.h>
+#endif
+
 #include <SFML/OpenGL.hpp>
 #include <SFML/Window.hpp>
 #include <string>
@@ -30,6 +34,14 @@ int main( int argc, char ** argv )
 	sf::Window window(sf::VideoMode(1280, 720), "P4 Deferred Renderer", sf::Style::Default, contextSettings);
 	window.setVerticalSyncEnabled(true);
 
+#ifdef _WIN32
+	GLenum err = glewInit();
+	if ( err != GLEW_OK )
+	{
+		sf::err() << "Fatal Error: " << glewGetErrorString( err ) << std::endl;
+		return 1;
+	}
+#endif
 
 	// load the scene data - this may take a while for large scenes
 	std::string filename;

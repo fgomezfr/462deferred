@@ -1,3 +1,8 @@
 add_executable(p4 main.cpp)
-target_link_libraries(p4 scene renderer ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${OPENGL_LIBRARIES})
+
+if ( CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX )
+	set(CMAKE_CXX_FLAGS "-std=c++0x" ${CMAKE_CXX_FLAGS})
+endif()
+
+target_link_libraries(p4 scene renderer ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} ${SFML_DEPENDENCIES} ${SFML_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 install(TARGETS p4 DESTINATION ${PROJECT_SOURCE_DIR}/..)
