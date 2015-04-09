@@ -34,6 +34,7 @@ int main( int argc, char ** argv )
 	sf::Window window(sf::VideoMode(1280, 720), "P4 Deferred Renderer", sf::Style::Default, contextSettings);
 	window.setVerticalSyncEnabled(true);
 
+	// initialize glew on windows so we can access OpenGL1.2+ functionality
 #ifdef _WIN32
 	GLenum err = glewInit();
 	if ( err != GLEW_OK )
